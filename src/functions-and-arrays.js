@@ -1,24 +1,66 @@
 // Iteration #1: Find the maximum
-function maxOfTwoNumbers() {}
+function maxOfTwoNumbers(num1,num2) {
+  if(num1>num2){return num1}
+else {return num2}
+
+}console.log (maxOfTwoNumbers(2,7))
 
 
 
 // Iteration #2: Find longest word
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
 
-function findLongestWord() {}
+function findLongestWord(arr) {
+ // if () { return "null";}
+  let longestWord = '';
+  for (let i = 0; i < arr.length; i++) {
+     if (arr[i].length > longestWord.length) {
+       longestWord = arr[i];
+     }
+  }
+  return longestWord;
+ }
+console.log(findLongestWord(words))
 
 
 
 // Iteration #3: Calculate the sum
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
-function sumNumbers() {}
+function sumNumbers(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+     sum += arr[i];
+  }
+  return sum;
+ }
+ console.log(sumNumbers(numbers)); 
 
 
 
 // Iteration #3.1 Bonus:
-function sum() {}
+const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
+function sum(arr) {
+if (!Array.isArray(arr)) {
+  throw new Error("Input must be an array");
+}
+
+let totalSum = 0;
+for (let i = 0; i < arr.length; i++) 
+{
+  if (typeof arr[i] === 'number' || arr[i] === true || arr[i] === false) {
+    totalSum += Number(arr[i]);
+  } else if (typeof arr[i] === 'string') {
+    totalSum += arr[i].length;
+  } else {
+    throw new Error("Array elements must be a number, string, or boolean");
+  }
+}
+
+return totalSum;
+
+}
+console.log(sum(mixedArr))
 
 
 
@@ -26,17 +68,88 @@ function sum() {}
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers() {}
+function average(arr) {
+  if (!Array.isArray(arr)) {
+     throw new Error("Input must be an array");
+  }
+ 
+  let totalSum = 0;
+  for (let i = 0; i < arr.length; i++) {
+     if (typeof arr[i] === 'number' || arr[i] === true || arr[i] === false) {
+       totalSum += Number(arr[i]);
+     } else if (typeof arr[i] === 'string') {
+       totalSum += arr[i].length;
+     } else {
+       throw new Error("Array elements must be a number, string, or boolean");
+     }
+  }
+ 
+  return totalSum / arr.length;
+ }
+
+console.log(average(numbersAvg))
+
+
+
+function averageNumbers(arr1) {
+  if (!Array.isArray(arr1)) {
+     throw new Error("Input must be an array");
+  }
+ 
+  let totalSum = 0;
+  for (let i = 0; i < arr1.length; i++) {
+     if (typeof arr1[i] !== 'number') {
+       throw new Error("Array elements must be numbers");
+     }
+     totalSum += arr1[i];
+  }
+ 
+  return totalSum / arr1.length;
+ }
+ 
+ const numbers1 = [2, 6, 9, 10, 7, 4, 1, 9];
+ console.log(averageNumbers(numbers1));
 
 
 // Level 2: Array of strings
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
 
-function averageWordLength() { }
+function averageWordLength(words) {
+ 
+ 
+  const totalLength = words.reduce((acc, word) => acc + word.length, 0);
+  const averageLength = totalLength / words.length;
+ 
+  return averageLength;
+ }
+ 
+ const words1 = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
+ console.log(averageWordLength(words1)); 
 
 // Bonus - Iteration #4.1
-function avg() {}
-
+function avg(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) {
+     throw new Error('Please provide a non-empty array');
+  }
+ 
+  const sum = arr.reduce((acc, value) => {
+     if (typeof value === 'number') {
+       return acc + value;
+     } else if (typeof value === 'boolean') {
+       return acc + (value ? 1 : 0);
+     } else if (typeof value === 'string') {
+       return acc + value.length;
+     } else {
+       throw new Error('Invalid data type in array');
+     }
+  }, 0);
+ 
+  const average = sum / arr.length;
+  return average;
+ }
+ 
+ const mixedArr2 = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
+ console.log(avg(mixedArr2)); 
 // Iteration #5: Unique arrays
 const wordsUnique = [
   'crab',
